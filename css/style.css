@@ -1,0 +1,63 @@
+body{
+    background: rgb(1,0,6);
+    background: linear-gradient(0deg, rgba(1,0,6,1) 13%, rgba(10,0,59,1) 100%);
+    color:white;
+    font-family: cambria;
+    font-weight:400;
+    font-style:normal;
+    font-size:20;
+    font-variant:normal;
+    line-height: normal;
+    margin: 0;
+	height: 100%;
+}
+.container{	
+	background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 39%, rgba(148,148,148,1) 100%);
+    height: 100%;	
+	background-position: center;
+	background-size: cover;	
+	position: relative;	
+}
+h2,p{
+font-family: sans-serif;
+font-weight: lighter;
+color: black;
+}
+h2{
+	font-size: 35px;
+    padding-left: 10px;
+}
+p{
+	font-size: 30px;
+	letter-spacing: 4px;
+}
+table{
+    width:75% ;
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 39%, rgba(148,148,148,1) 100%);
+    color: black;
+    opacity: 0.85;
+    border: 3px solid rgb(242, 212, 243) ;
+    box-align: center;
+}
+td{
+    width: 50%;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#history{
+    text-align: center;
+    font-weight: 700;
+}
+#head{
+    text-align: center;    
+}
+#head :hover{
+    background: rgb(1,0,6);
+    background: linear-gradient(180deg, rgba(1,0,6,1) 13%, rgba(36,36,36,1) 100%);
+    color: white;
+}
