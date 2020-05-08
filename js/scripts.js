@@ -1,10 +1,12 @@
 //часть 2
 
+//по варианту data = альпы или карпаты
+let data =["Альпы","Карпаты"];
 //задание obj с помощию литерала
 let obj1 = {
 	//поле-свойство countries которое содержит первоначальную
 	// информацию о странах (аналог массива countries)
-	Countries : countries,	
+	Countries : countries.slice(), //копирование массива	
 	//вывод таблиц функцией
 	OutCountries: function(){
 		function makeTableFromCountry (strany){	
@@ -19,7 +21,7 @@ let obj1 = {
     		let head="<h1>"+strany[0]+' - '+strany[1]+"</h1>"; 
 
    			//вывод строки страна - столица 
-			//столб - заголовок 
+		   	//столб - заголовок 
    			 td="<td colspan = 2 >"+head+"</td>";
   			 //1 строка с заголовком
   			 tr="<tr id='head'>"+td+"</tr>";    
@@ -153,31 +155,28 @@ function Change()
 {
 	//конструктор
 
-	//массив c отборкой
-	this.Countries = [],
+	//копирование 
+	this.Countries = countries.slice(),
 
 	//функция изменения стран
 	this.changeCountries = function(data){
 
-		//this.Countries = [],
-		//перезначаем на пустой массив, пушто я не знаю как передать 
-		//data "Альпы" или "Карпаты"
-		//в уме пока сидит что data - obj с 2 полями либо массив
-		//если нужно исправить, подскажите что такое data
-		//ибо если я начну удалять по порядку, то удалятся все, кроме альп,
-		//а карпаты не восстановить		
-
 		//проходим по массиву стран
-		for(let i = 0; i<countries.length; i++)
-		{		 
-			//если в стране альпы или карпаты, 
-			if ( countries[i][6].includes(data) )
+		for(let i = 0; i<this.Countries.length; i++)
+		{		
+			//если в стране net альпы или карпаты, 
+      //data =["Альпы","Карпаты"];
+			if (!(this.Countries[i][6].includes(data[0]) || this.Countries[i][6].includes(data[1])))
 			{
-				//добавляем в наш массив отборки
-				this.Countries.push(countries[i]);
-			}			
+				//удаляем эту страну
+				delete this.Countries[i];
+       // console.log(this.Countries.length)
+			}	      	
 		}		
-		//по идее длина массива =3(альпы), 5(+карпаты) проверяем		
+		//по идее конечная длина массива = 14
+    //delete - удаляет элемент, но не изменяет длину
+    //splice(start: int, deleteCount: int, items...: any)	
+    //корректирует длину, из-за чего использовать в цикле for длину нельзя
 		console.log(this.Countries);
 	}	
 };
@@ -190,20 +189,24 @@ let obj2 = new Change();
 
 //выбоорка массива со странами в которые
 //находятся на территории альп и карпат
-obj2.changeCountries("Альпы");	//включение стран с альпами obj2
-obj2.changeCountries("Карпаты");	//включение стран с карпатами obj2
+obj2.changeCountries(data);	//включение стран с альпами obj2
+
 
 //вывод массива obj2 через метод obj1
 //obj1.OutCountries.bind(obj2)(); //выведутся страны с карпатами и альпами
 
 //изменить данные obj1.countries с помощью
 //метода changeCountries объекта obj2;
-//наверное data - массив, подскажите пожалуйста,
-//а пока костыль;
-obj1.Countries = []; //проблему удаления описал выше, поэтому вместо удаления, включение в пустой
-obj2.changeCountries.bind(obj1)("Альпы");	//включение стран с альпами obj1
-obj2.changeCountries.bind(obj1)("Карпаты");	//включение стран с карпатами obj1
-//obj1.OutCountries(); //выведутся страны с карпатами и альпами
+obj2.changeCountries.bind(obj1)(data);	//включение стран с альпами и карпатами obj1
+obj1.OutCountries(); //выведутся страны(5) с карпатами и альпами
 
 //показать как (не)изменились данные поля countries объекта obj2.
-obj1.OutCountries.bind(obj2)(); //выведутся страны с карпатами и альпами, не изм благодаря this
+obj1.OutCountries.bind(obj2)(); //выведутся страны(5) с карпатами и альпами, не изм благодаря this
+//в итоге на сайте 10 таблиц 
+//первые 5 - изм obj1 методом obj2 и выведенные методом obj1
+//вторые 5 - изм obj2 и выведенные методом obj1
+
+//проверка что глобальный массив countries не изменился
+//obj1.Countries = countries;
+//obj1.OutCountries();
+//проверил - все в порядке
