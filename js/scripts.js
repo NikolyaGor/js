@@ -6,7 +6,7 @@ let data =["Альпы","Карпаты"];
 let obj1 = {
 	//поле-свойство countries которое содержит первоначальную
 	// информацию о странах (аналог массива countries)
-	Countries : countries.slice(), //копирование массива	
+	Countries : Object.assign([], countries),  //копирование массива	
 	//вывод таблиц функцией
 	OutCountries: function(){
 		function makeTableFromCountry (strany){	
@@ -156,7 +156,7 @@ function Change()
 	//конструктор
 
 	//копирование 
-	this.Countries = countries.slice(),
+	this.Countries = Object.assign([], countries),
 
 	//функция изменения стран
 	this.changeCountries = function(data){
