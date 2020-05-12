@@ -61,3 +61,8 @@ td{
     background: linear-gradient(180deg, rgba(1,0,6,1) 13%, rgba(36,36,36,1) 100%);
     color: white;
 }
+.obj{
+    text-align : center;
+    color : white;
+    font-size: 30px;
+}
