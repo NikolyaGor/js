@@ -178,7 +178,7 @@ function Change()
     //delete - удаляет элемент, но не изменяет длину
     //splice(start: int, deleteCount: int, items...: any)	
     //корректирует длину, из-за чего использовать в цикле for длину нельзя
-		console.log(this.Countries);
+		//console.log(this.Countries);
 	}	
 };
 
@@ -188,9 +188,21 @@ function Change()
 //создание нового объекта
 let obj2 = new Change();
 
+console.log('До изменений');
+console.log('obj1 = ',obj1.Countries);
+console.log('obj2 = ',obj2.Countries);
+console.log('countries = ',countries);
+
 //выбоорка массива со странами в которые
 //находятся на территории альп и карпат
 obj2.changeCountries(data);	//включение стран с альпами obj2
+
+console.log('После метода obj2');
+console.log('obj1 = ',obj1.Countries);
+console.log('obj2 = ',obj2.Countries);
+console.log('countries = ',countries);
+
+
 
 
 //вывод массива obj2 через метод obj1
@@ -200,6 +212,12 @@ obj2.changeCountries(data);	//включение стран с альпами ob
 //метода changeCountries объекта obj2;
 obj2.changeCountries.bind(obj1)(data);	//включение стран с альпами и карпатами obj1
 obj1.OutCountries(); //выведутся страны(5) с карпатами и альпами
+
+console.log('После метода obj2 над obj1');
+console.log('obj1 = ',obj1.Countries);
+console.log('obj2 = ',obj2.Countries);
+console.log('countries = ',countries);
+
 
 //показать как (не)изменились данные поля countries объекта obj2.
 obj1.OutCountries.bind(obj2)(); //выведутся страны(5) с карпатами и альпами, не изм благодаря this
