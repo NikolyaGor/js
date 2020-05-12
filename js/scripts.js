@@ -6,8 +6,9 @@ let data =["Альпы","Карпаты"];
 let obj1 = {
 	//поле-свойство countries которое содержит первоначальную
 	// информацию о странах (аналог массива countries)
-	Countries : Object.assign([], countries),  //копирование массива	
-	//вывод таблиц функцией
+	Countries : JSON.parse(JSON.stringify(countries)),  //копирование массива	
+
+  //вывод таблиц функцией
 	OutCountries: function(){
 		function makeTableFromCountry (strany){	
 	
@@ -148,7 +149,7 @@ let obj1 = {
 	},
 //конец либерала объекта
 };
-
+ 
 //функия для создания obj2 c отбором нужных стран
 //с территорией согласно критерию
 function Change()
@@ -156,7 +157,7 @@ function Change()
 	//конструктор
 
 	//копирование 
-	this.Countries = Object.assign([], countries),
+	this.Countries = JSON.parse(JSON.stringify(countries)),
 
 	//функция изменения стран
 	this.changeCountries = function(data){
