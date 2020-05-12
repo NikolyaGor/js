@@ -185,47 +185,29 @@ function Change()
 //вывод массива obj1
 //obj1.OutCountries(); //-выведутся все страны как в лб 3
 
+
 //создание нового объекта
 let obj2 = new Change();
 
-console.log('До изменений');
-console.log('obj1 = ',obj1.Countries);
-console.log('obj2 = ',obj2.Countries);
-console.log('countries = ',countries);
-
-//выбоорка массива со странами в которые
-//находятся на территории альп и карпат
-obj2.changeCountries(data);	//включение стран с альпами obj2
-
-console.log('После метода obj2');
-console.log('obj1 = ',obj1.Countries);
-console.log('obj2 = ',obj2.Countries);
-console.log('countries = ',countries);
-
-
-
-
 //вывод массива obj2 через метод obj1
-//obj1.OutCountries.bind(obj2)(); //выведутся страны с карпатами и альпами
+//obj1.OutCountries.bind(obj2)();
+
 
 //изменить данные obj1.countries с помощью
 //метода changeCountries объекта obj2;
-obj2.changeCountries.bind(obj1)(data);	//включение стран с альпами и карпатами obj1
+obj2.changeCountries.bind(obj1)(data);
+
+document.write('<p class="obj">OBJ1 Countries'); 
 obj1.OutCountries(); //выведутся страны(5) с карпатами и альпами
 
-console.log('После метода obj2 над obj1');
-console.log('obj1 = ',obj1.Countries);
-console.log('obj2 = ',obj2.Countries);
-console.log('countries = ',countries);
-
-
+for(let i = 0; i < 10; i++){
+ document.write('<br>')
+if (i==7) document.write('<p class="obj">OBJ2 Countries'); }
 //показать как (не)изменились данные поля countries объекта obj2.
-obj1.OutCountries.bind(obj2)(); //выведутся страны(5) с карпатами и альпами, не изм благодаря this
-//в итоге на сайте 10 таблиц 
-//первые 5 - изм obj1 методом obj2 и выведенные методом obj1
-//вторые 5 - изм obj2 и выведенные методом obj1
+obj1.OutCountries.bind(obj2)(); 
 
 //проверка что глобальный массив countries не изменился
-//obj1.Countries = countries;
-//obj1.OutCountries();
+document.write('<p class="obj">global countries');
+obj1.Countries = countries;
+obj1.OutCountries();
 //проверил - все в порядке
